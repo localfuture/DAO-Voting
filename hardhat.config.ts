@@ -9,8 +9,8 @@ import "./tasks/lock";
 
 // Run 'npx hardhat vars setup' to see the list of variables that need to be set
 
-const mnemonic: string = vars.get("MNEMONIC");
-const infuraApiKey: string = vars.get("INFURA_API_KEY");
+// const mnemonic: string = vars.get("MNEMONIC");
+// const infuraApiKey: string = vars.get("INFURA_API_KEY");
 
 const chainIds = {
   "arbitrum-mainnet": 42161,
@@ -25,28 +25,28 @@ const chainIds = {
   sepolia: 11155111,
 };
 
-function getChainConfig(chain: keyof typeof chainIds): NetworkUserConfig {
-  let jsonRpcUrl: string;
-  switch (chain) {
-    case "avalanche":
-      jsonRpcUrl = "https://api.avax.network/ext/bc/C/rpc";
-      break;
-    case "bsc":
-      jsonRpcUrl = "https://bsc-dataseed1.binance.org";
-      break;
-    default:
-      jsonRpcUrl = "https://" + chain + ".infura.io/v3/" + infuraApiKey;
-  }
-  return {
-    accounts: {
-      count: 10,
-      mnemonic,
-      path: "m/44'/60'/0'/0",
-    },
-    chainId: chainIds[chain],
-    url: jsonRpcUrl,
-  };
-}
+// function getChainConfig(chain: keyof typeof chainIds): NetworkUserConfig {
+//   let jsonRpcUrl: string;
+//   switch (chain) {
+//     case "avalanche":
+//       jsonRpcUrl = "https://api.avax.network/ext/bc/C/rpc";
+//       break;
+//     case "bsc":
+//       jsonRpcUrl = "https://bsc-dataseed1.binance.org";
+//       break;
+//     default:
+//       jsonRpcUrl = "https://" + chain + ".infura.io/v3/" + infuraApiKey;
+//   }
+//   return {
+//     accounts: {
+//       count: 10,
+//       mnemonic,
+//       path: "m/44'/60'/0'/0",
+//     },
+//     chainId: chainIds[chain],
+//     url: jsonRpcUrl,
+//   };
+// }
 
 const config: HardhatUserConfig = {
   defaultNetwork: "hardhat",
@@ -73,26 +73,26 @@ const config: HardhatUserConfig = {
   },
   networks: {
     hardhat: {
-      accounts: {
-        mnemonic,
-      },
+      // accounts: {
+      //   mnemonic,
+      // },
       chainId: chainIds.hardhat,
     },
     ganache: {
-      accounts: {
-        mnemonic,
-      },
+      // accounts: {
+      //   mnemonic,
+      // },
       chainId: chainIds.ganache,
       url: "http://localhost:8545",
     },
-    arbitrum: getChainConfig("arbitrum-mainnet"),
-    avalanche: getChainConfig("avalanche"),
-    bsc: getChainConfig("bsc"),
-    mainnet: getChainConfig("mainnet"),
-    optimism: getChainConfig("optimism-mainnet"),
-    "polygon-mainnet": getChainConfig("polygon-mainnet"),
-    "polygon-mumbai": getChainConfig("polygon-mumbai"),
-    sepolia: getChainConfig("sepolia"),
+    // arbitrum: getChainConfig("arbitrum-mainnet"),
+    // avalanche: getChainConfig("avalanche"),
+    // bsc: getChainConfig("bsc"),
+    // mainnet: getChainConfig("mainnet"),
+    // optimism: getChainConfig("optimism-mainnet"),
+    // "polygon-mainnet": getChainConfig("polygon-mainnet"),
+    // "polygon-mumbai": getChainConfig("polygon-mumbai"),
+    // sepolia: getChainConfig("sepolia"),
   },
   paths: {
     artifacts: "./artifacts",
@@ -101,7 +101,7 @@ const config: HardhatUserConfig = {
     tests: "./test",
   },
   solidity: {
-    version: "0.8.19",
+    version: "0.8.20",
     settings: {
       metadata: {
         // Not including the metadata hash
